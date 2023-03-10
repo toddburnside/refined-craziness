@@ -13,5 +13,12 @@ object Main extends App {
 
   val sane: Crazy = refineV[Greater[5] Or Equal[5]](5).toOption.get
   val sane2: Crazy = refineMV[Greater[5] Or Equal[5]](5)
+
+  type Attempt = Int Refined (Equal[5] Or Greater[5])
+  object Attempt extends RefinedTypeOps[Attempt, Int]
+
+  // This works fine
+  val attempt = Attempt.unsafeFrom(5)
+
   println("Hello, World!")
 }

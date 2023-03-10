@@ -9,7 +9,7 @@ object Main extends App {
   object Crazy extends RefinedTypeOps.Numeric[Crazy, Int]
 
   // uncomment this line and see if it causes problems when you run the app
-  val crazy = Crazy.unsafeFrom(5)
+  // val crazy = Crazy.unsafeFrom(5)
 
   val sane: Crazy = refineV[Greater[5] Or Equal[5]](5).toOption.get
   val sane2: Crazy = refineMV[Greater[5] Or Equal[5]](5)
